@@ -21,19 +21,19 @@ SaraDil Akademisi provides targeted academic support for Bilkent University stud
 
 - Private one-on-one tutoring
 - Small group classes (2-4 students)
-- Exam preparation workshops
-- Laboratory work support
+- Misterm and Finals preparation workshops
+- Lab Reports work support
 - Online and in-person options
 
 ## Website
 
-View the live brochure: [https://moisf56.github.io/SaradDl-Brochure](https://moisf56.github.io/SaradDl-Brochure)
+View the live brochure: [https://moisf56.github.io/SaraDil-Brochure](https://moisf56.github.io/SaraDil-Brochure)
 
 ## Contact
 
-- **Email**: info@saradilakademisi.com
-- **Phone**: 0XXX XXX XX XX
-- **Location**: Near Bilkent University
+- **Email**: saradarcan@saradil.com
+- **WhatsApp**: +90 538 812 6975 - +90 537 482 3557
+- **Address**: Mustafa Kemal mah., 2159. Sk., Duru İş Merkezi 3.kat, 6/8, 06510 Çankaya/Ankara
 - **Hours**: Mon-Fri 09:00-21:00, Sat-Sun 10:00-18:00
 
 ## Free Trial
