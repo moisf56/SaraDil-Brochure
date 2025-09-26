@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilkent Dershanesi - Broşür</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8fafc;
+        }
+        
+        .brochure {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .main-title {
+            font-size: 3.5em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            position: relative;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 800;
+            display: block;
+            color: #fbbf24;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .content {
+            padding: 50px 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #3b82f6, #06b6d4);
+            border-radius: 2px;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .course-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #3b82f6, #06b6d4);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+        }
+        
+        .course-code {
+            font-size: 1.8em;
+            font-weight: 800;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+        
+        .course-name {
+            font-size: 1.1em;
+            color: #6b7280;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .weekly-content {
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        .weekly-content h4 {
+            font-size: 1.1em;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .week-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        .week-item:last-child {
+            border-bottom: none;
+        }
+        
+        .week-item strong {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        
+        .exam-prep {
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #e0f2fe, #b3e5fc);
+            border-radius: 10px;
+            font-size: 0.9em;
+            color: #0277bd;
+            border-left: 4px solid #0288d1;
+        }
+        
+        .features-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .feature-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            color: #6b7280;
+            font-size: 0.95em;
+        }
+        
+        .exam-prep-section {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+        }
+        
+        .exam-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .exam-type-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-left: 5px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+        
+        .exam-type-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+        }
+        
+        .exam-type-card h3 {
+            color: #1e3a8a;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .exam-type-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .exam-type-card li {
+            padding: 6px 0;
+            font-size: 0.95em;
+            color: #374151;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .exam-type-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        
+        .grade-scale {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        
+        .grade-scale h3 {
+            color: #1e3a8a;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .grade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .grade-item {
+            padding: 12px 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        
+        .grade-item.excellent {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+        
+        .grade-item.great {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+        }
+        
+        .grade-item.good {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+        }
+        
+        .grade-item.fair {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+        
+        .grade-item.pass {
+            background: linear-gradient(135deg, #6b7280, #4b5563);
+            color: white;
+        }
+        
+        .grade-warning {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border: 2px solid #fca5a5;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            color: #dc2626;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+        
+        .success-guarantee {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            border: 2px solid #6ee7b7;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            color: #065f46;
+            font-size: 0.95em;
+            font-weight: 600;
+        }
+        
+        .pricing-section {
+            background: #1e3a8a;
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .pricing-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .pricing-type {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fbbf24;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .pricing-features li {
+            padding: 8px 0;
+            font-size: 0.95em;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            padding: 25px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .contact-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .contact-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            background: #fbbf24;
+            color: #1e3a8a;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 25px;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5em;
+            }
+            
+            .header-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .contact-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="brochure">
+        <div class="header">
+            <h1 class="main-title">SARADİL AKADEMİSİ</h1>
+            <p class="subtitle">Bilkent Özel Matematik & Fen Bilimleri Dershanesi</p>
+            <div class="header-stats">
+                <div class="stat">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Farklı Ders</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Başarı Oranı</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Yıl Tecrübe</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">Sunduğumuz Dersler</h2>
+                <div class="courses-grid">
+                    <div class="course-card">
+                        <div class="course-code">MATH101</div>
+                        <div class="course-name">Calculus I</div>
+                        <div class="weekly-content">
+                            <h4>Haftalık Destek Programı:</h4>
+                            <div class="week-item">
+                                <strong>1-2. Hafta:</strong> Limits (1.4, 1.5, 1.6, 1.8) - Limit kavramları ve hesaplama
+                            </div>
+                            <div class="week-item">
+                                <strong>3-5. Hafta:</strong> Derivatives (2.1-2.9, 3.1-3.2) - Türev kuralları ve zincirleme kural
+                            </div>
+                            <div class="week-item">
+                                <strong>6-7. Hafta:</strong> Applications (3.3-3.7, 3.9) - Türev uygulamaları ve optimizasyon
+                            </div>
+                            <div class="week-item">
+                                <strong>8-9. Hafta:</strong> Integrals (4.1-4.5, 5.1) - İntegral kavramı ve hesaplama teknikleri
+                            </div>
+                            <div class="week-item">
+                                <strong>10-14. Hafta:</strong> Advanced Topics (5.2-5.3, 6.2-6.8, 7.1-7.6) - Transcendental fonksiyonlar ve ileri teknikler
+                            </div>
+                        </div>
+                        <div class="exam-prep">
+                            <strong>Sınav Hazırlığı:</strong> 2 Vize (%26.7 her biri) + Final (%26.7) + Quiz (%10) + Ödev (%10)
+                        </div>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-code">MATH102</div>
+                        <div class="course-name">Calculus II</div>
+                        <div class="weekly-content">
+                            <h4>Haftalık Destek Programı:</h4>
+                            <div class="week-item">
+                                <strong>1-5. Hafta:</strong> Sequences & Series (11.1-11.11) - Diziler, seriler ve yakınsama testleri
+                            </div>
+                            <div class="week-item">
+                                <strong>6. Hafta:</strong> Vectors, Lines, Planes (12.1-12.3, 12.5) - 3D koordinat sistemleri
+                            </div>
+                            <div class="week-item">
+                                <strong>7-10. Hafta:</strong> Partial Derivatives (12.4-12.6, 13.1-13.3, 14.1-14.7) - Kısmi türevler ve uygulamaları
+                            </div>
+                            <div class="week-item">
+                                <strong>11-14. Hafta:</strong> Multiple Integrals (15.1-15.9) - Çoklu integraller ve koordinat sistemleri
+                            </div>
+                        </div>
+                        <div class="exam-prep">
+                            <strong>Sınav Hazırlığı:</strong> 2 Vize (%28 her biri) + Final (%28) + Quiz (%10) + Ödev (%6)
+                        </div>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-code">MATH105</div>
+                        <div class="course-name">Introduction to Calculus I</div>
+                        <div class="weekly-content">
+                            <h4>Haftalık Destek Programı:</h4>
+                            <div class="week-item">
+                                <strong>1-2. Hafta:</strong> Real Numbers, Inequalities, Functions (0.1-0.7) - Temel matematik ve fonksiyonlar
+                            </div>
+                            <div class="week-item">
+                                <strong>3-5. Hafta:</strong> Limits & Continuity (1.1-1.6) - Limit kavramı ve süreklilik
+                            </div>
+                            <div class="week-item">
+                                <strong>6-8. Hafta:</strong> Derivatives (2.1-2.8) - Türev kuralları ve implicit diferansiyasyon
+                            </div>
+                            <div class="week-item">
+                                <strong>9-11. Hafta:</strong> Applications (3.1-3.6) - Maksimum/minimum ve Mean Value Theorem
+                            </div>
+                            <div class="week-item">
+                                <strong>12-14. Hafta:</strong> Optimization & Economics (3.4-3.5) - Optimizasyon problemleri ve iktisadi uygulamalar
+                            </div>
+                        </div>
+                        <div class="exam-prep">
+                            <strong>Sınav Hazırlığı:</strong> Vize (%42) + Final (%46) + Ödev (%12)
+                        </div>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-code">MATH106</div>
+                        <div class="course-name">Introduction to Calculus II</div>
+                        <div class="weekly-content">
+                            <h4>Haftalık Destek Programı:</h4>
+                            <div class="week-item">
+                                <strong>1-2. Hafta:</strong> Antiderivatives & Differential Equations (3.8-3.9, 4.1-4.2) - Anti-türev ve diferansiyel denklemler
+                            </div>
+                            <div class="week-item">
+                                <strong>3-4. Hafta:</strong> Fundamental Theorems (4.3-4.5, 5.1) - İntegralin temel teoremleri
+                            </div>
+                            <div class="week-item">
+                                <strong>5-7. Hafta:</strong> Transcendental Functions (6.1-6.5, 6.8) - Logaritma, üstel ve ters trigonometrik fonksiyonlar
+                            </div>
+                            <div class="week-item">
+                                <strong>8-11. Hafta:</strong> Integration & Indeterminate Forms (7.1-7.5, 8.1-8.2) - İleri integrasyon teknikleri
+                            </div>
+                            <div class="week-item">
+                                <strong>12-14. Hafta:</strong> Multivariable Calculus (12.2, 12.6, 12.8-12.9) - Kısmi türevler ve Lagrange çarpanları
+                            </div>
+                        </div>
+                        <div class="exam-prep">
+                            <strong>Sınav Hazırlığı:</strong> Vize (%40) + Final (%40) + Quiz (%10) + Ödev (%10)
+                        </div>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-code">PHYS101</div>
+                        <div class="course-name">General Physics I</div>
+                        <div class="weekly-content">
+                            <h4>Haftalık Destek Programı:</h4>
+                            <div class="week-item">
+                                <strong>1. Hafta:</strong> Introduction, Measurement, Estimating - Giriş ve ölçüm kavramları
+                            </div>
+                            <div class="week-item">
+                                <strong>2-3. Hafta:</strong> Kinematics (1D, 2D/3D) - Tek ve çok boyutlu hareket analizi
+                            </div>
+                            <div class="week-item">
+                                <strong>4-6. Hafta:</strong> Dynamics - Newton Kanunları, sürtünme, dairesel hareket
+                            </div>
+                            <div class="week-item">
+                                <strong>7-9. Hafta:</strong> Energy & Work - Kütle çekimi, iş, enerji korunumu
+                            </div>
+                            <div class="week-item">
+                                <strong>11-14. Hafta:</strong> Momentum, Rotation, Oscillations - Momentum, dönme hareketi ve titreşimler
+                            </div>
+                        </div>
+                        <div class="exam-prep">
+                            <strong>Sınav Hazırlığı:</strong> Vize 1 (%15) + Vize 2 (%20) + Final (%25) + Lab (%20) + Quiz (%15) + Ödev (%5)
+                        </div>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-code">PHYS102</div>
+                        <div class="course-name">General Physics II</div>
+                        <div class="weekly-content">
+                            <h4>Haftalık Destek Programı:</h4>
+                            <div class="week-item">
+                                <strong>1-2. Hafta:</strong> Electric Charge and Electric Field - Elektrik yükü ve elektrik alan
+                            </div>
+                            <div class="week-item">
+                                <strong>3-4. Hafta:</strong> Gauss's Law, Electric Potential - Gauss kanunu ve elektrik potansiyel
+                            </div>
+                            <div class="week-item">
+                                <strong>5-8. Hafta:</strong> Capacitance, Current, Resistance, DC Circuits - Kapasitans, akım, direnç ve DC devreler
+                            </div>
+                            <div class="week-item">
+                                <strong>9-11. Hafta:</strong> Magnetism, Magnetic Fields, Sources - Manyetizma ve manyetik alan kaynakları
+                            </div>
+                            <div class="week-item">
+                                <strong>12-14. Hafta:</strong> Electromagnetic Induction, AC Circuits, Maxwell Equations - Elektromanyetik indüksiyon ve Maxwell denklemleri
+                            </div>
+                        </div>
+                        <div class="exam-prep">
+                            <strong>Sınav Hazırlığı:</strong> Vize 1 (%15) + Vize 2 (%20) + Final (%25) + Lab (%20) + Quiz (%15) + Ödev (%5)
+                        </div>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-code">CS115</div>
+                        <div class="course-name">Introduction to Programming in Python</div>
+                        <div class="weekly-content">
+                            <h4>Haftalık Destek Programı:</h4>
+                            <div class="week-item">
+                                <strong>1-2. Hafta:</strong> Python Basics, Branching, Strings, Input, Iteration - Python temelleri ve temel yapılar
+                            </div>
+                            <div class="week-item">
+                                <strong>3-5. Hafta:</strong> Numerical Programs, Functions, Scoping, Global Variables - Sayısal programlar ve fonksiyonlar
+                            </div>
+                            <div class="week-item">
+                                <strong>6-7. Hafta:</strong> Structured Types, Arrays, Multi-Dimensional Arrays - Veri yapıları ve diziler
+                            </div>
+                            <div class="week-item">
+                                <strong>8-10. Hafta:</strong> OOP, Algorithmic Complexity, Data Structures, Search & Sort - Nesne yönelimli programlama ve algoritmalar
+                            </div>
+                            <div class="week-item">
+                                <strong>11-14. Hafta:</strong> Plotting, Data Visualization, Experimental Data Analysis - Görselleştirme ve veri analizi
+                            </div>
+                        </div>
+                        <div class="exam-prep">
+                            <strong>Sınav Hazırlığı:</strong> Lab Exam (%20) + Vize (%40) + Final (%40)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features-section">
+                <h2 class="section-title">Neden SaraDil Akademisi?</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <span class="feature-icon">🎯</span>
+                        <h3 class="feature-title">Bilkent'e Özel Müfredat</h3>
+                        <p class="feature-description">Bilkent Üniversitesi'nin güncel müfredatına %100 uyumlu, özel olarak hazırlanmış kapsamlı program</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <span class="feature-icon">📝</span>
+                        <h3 class="feature-title">Resmi Sınav Bankası</h3>
+                        <p class="feature-description">Bilkent'in resmi geçmiş sınav sorularına erişim ve detaylı çözüm analizleri</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <span class="feature-icon">🏆</span>
+                        <h3 class="feature-title">Başarı Stratejileri</h3>
+                        <p class="feature-description">Quiz, vize ve final sınavları için kanıtlanmış özel teknikler ve stratejiler</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <span class="feature-icon">👥</span>
+                        <h3 class="feature-title">Esnek Öğretim</h3>
+                        <p class="feature-description">İhtiyacınıza göre bireysel özel dersler veya küçük grup dersleri seçeneği</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <span class="feature-icon">🎓</span>
+                        <h3 class="feature-title">Uzman Eğitmenler</h3>
+                        <p class="feature-description">Bilkent mezunu ve alanında uzman eğitmenlerden profesyonel öğretim</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <span class="feature-icon">📊</span>
+                        <h3 class="feature-title">Performans Takibi</h3>
+                        <p class="feature-description">Düzenli performans değerlendirmeleri ve bireysel gelişim raporları</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Bilkent Sınavlarında Başarı Stratejileri</h2>
+                <div class="exam-prep-section">
+                    <div class="exam-types">
+                        <div class="exam-type-card">
+                            <h3>📝 Quiz Başarı Desteği</h3>
+                            <ul>
+                                <li>Haftalık quiz konularını önceden çalışma</li>
+                                <li>10-15 dakikalık hızlı soru çözümü teknikleri</li>
+                                <li>Zaman yönetimi ve stres kontrolü</li>
+                                <li>Bilkent'e özel quiz formatları ve beklentiler</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="exam-type-card">
+                            <h3>📊 Vize Sınavı Hazırlığı</h3>
+                            <ul>
+                                <li>Kapsamlı konu tekrarı ve pekiştirme</li>
+                                <li>Bilkent geçmiş vize sorularının analizi</li>
+                                <li>Problem çözme stratejileri ve kısa yollar</li>
+                                <li>Sınav öncesi yoğun çalışma programları</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="exam-type-card">
+                            <h3>🎯 Final Sınavı Hazırlığı</h3>
+                            <ul>
+                                <li>Tüm dönem konularının sistematik tekrarı</li>
+                                <li>Bilkent öğretim üyelerinin soru tarzları analizi</li>
+                                <li>Entegre problem çözme yaklaşımları</li>
+                                <li>Final öncesi intensif destek programı</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="exam-type-card">
+                            <h3>🔬 Lab Çalışması Desteği</h3>
+                            <ul>
+                                <li>Lab raporlarında yüksek not alma teknikleri</li>
+                                <li>Deney sonuçlarını etkili analiz etme</li>
+                                <li>Lab projelerinde yaratıcı yaklaşımlar</li>
+                                <li>Lab notunun 60'ın üstünde kalmasını sağlama</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="grade-scale">
+                        <h3>📈 Bilkent Harf Notu Sistemi ve Hedeflerimiz</h3>
+                        <div class="grade-grid">
+                            <div class="grade-item excellent">A: 85-100 (Hedefimiz!)</div>
+                            <div class="grade-item great">A-: 80-84 (Harika!)</div>
+                            <div class="grade-item good">B+: 75-79 (Çok İyi)</div>
+                            <div class="grade-item good">B: 70-74 (İyi)</div>
+                            <div class="grade-item fair">B-: 65-69 (Orta)</div>
+                            <div class="grade-item fair">C+: 60-64 (Geçer)</div>
+                            <div class="grade-item pass">C: 55-59 (Minimum)</div>
+                        </div>
+                        <div class="grade-warning">
+                            <strong>⚠️ Kritik Uyarı:</strong> Lab notu 60'ın altında olursa final sınavına giremezsiniz! Tüm fizik derslerinde lab çalışması özellikle önemlidir.
+                        </div>
+                        <div class="success-guarantee">
+                            <strong>🎯 Başarı Garantimiz:</strong> Programımızı düzenli takip eden öğrencilerimizin %95'i hedefledikleri notu alıyor!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-section">
+                <h2 class="section-title" style="color: white;">Ders Paketleri</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3 class="pricing-type">Özel Ders</h3>
+                        <ul class="pricing-features">
+                            <li>Birebir öğretim</li>
+                            <li>Esnek saat planlaması</li>
+                            <li>Kişisel müfredat</li>
+                            <li>Hızlı ilerleme</li>
+                            <li>Online/Yüz yüze seçeneği</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <h3 class="pricing-type">Grup Dersleri</h3>
+                        <ul class="pricing-features">
+                            <li>2-4 kişilik küçük gruplar</li>
+                            <li>Sabit program</li>
+                            <li>Rekabetçi ortam</li>
+                            <li>Sosyal öğrenme</li>
+                            <li>Uygun fiyat</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-section">
+            <h2 class="section-title" style="color: white;">İletişim</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <div class="contact-title">WhatsApp</div>
+                    <div class="contact-info">+90 538 812 69 75</div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <div class="contact-title">E-posta</div>
+                    <div class="contact-info">saradarcan@saradil.com</div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div class="contact-title">Adres</div>
+                    <div class="contact-info">Mustafa Kemal mah., 2159. Sk.,<br>Duru İş Merkezi 3.kat, 6/8<br>06510 Çankaya/Ankara</div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">🕒</span>
+                    <div class="contact-title">Çalışma Saatleri</div>
+                    <div class="contact-info">Hafta içi: 09:00-21:00<br>Hafta sonu: 10:00-18:00</div>
+                </div>
+            </div>
+            
+            <button class="cta-button">Ücretsiz Deneme Dersi Al</button>
+            
+            <div style="margin-top: 30px; padding-top: 30px; border-top: 2px solid rgba(255,255,255,0.2);">
+                <h3 style="font-size: 1.5em; margin-bottom: 15px;">🎁 Özel Fırsat!</h3>
+                <p style="font-size: 1.1em; opacity: 0.9;">İlk dersinizi ücretsiz deneyin! Başarınızı garantilemek için size en uygun öğretim yöntemini birlikte keşfedelim.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
